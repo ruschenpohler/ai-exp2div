@@ -27,7 +27,7 @@ ADOPTION_FILTER: dict[str, dict[str, float | None]] = {
     },
 }
 FORMAL_SHARE: dict[str, float | None] = {
-    "US": None,
+    "US": 0.93,
     "Indonesia (EM aggregate)": None,
 }
 CUSHION: dict[str, float | None] = {
