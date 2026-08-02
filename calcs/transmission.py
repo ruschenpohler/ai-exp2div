@@ -14,13 +14,17 @@ from typing import Any
 
 SCENARIOS = ("cautious", "central", "fast")
 EXPOSURE = {"US": 0.60, "Indonesia (EM aggregate)": 0.40}
-TASK_FILTER = {"cautious": 0.14, "central": 0.50, "fast": 0.55}
+TASK_FILTER = {"cautious": 0.14, "central": 0.30, "fast": 0.46}
 
 # These are intentionally pending: the plan requires employment-weighted
 # current anchors and a separately sourced composition/cushion column.
-ADOPTION_FILTER: dict[str, float | None] = {
-    "US": None,
-    "Indonesia (EM aggregate)": None,
+ADOPTION_FILTER: dict[str, dict[str, float | None]] = {
+    "US": {"cautious": None, "central": None, "fast": None},
+    "Indonesia (EM aggregate)": {
+        "cautious": 0.10,
+        "central": 0.33,
+        "fast": 0.50,
+    },
 }
 FORMAL_SHARE: dict[str, float | None] = {
     "US": None,
@@ -47,13 +51,13 @@ def build_output() -> dict[str, Any]:
         countries: dict[str, Any] = {}
         for country, exposure in EXPOSURE.items():
             realized = multiply(
-                [exposure, TASK_FILTER[scenario], ADOPTION_FILTER[country]]
+                [exposure, TASK_FILTER[scenario], ADOPTION_FILTER[country][scenario]]
             )
             formal = FORMAL_SHARE[country]
             countries[country] = {
                 "flagged_exposure_share": exposure,
                 "task_filter": TASK_FILTER[scenario],
-                "adoption_filter": ADOPTION_FILTER[country],
+                "adoption_filter": ADOPTION_FILTER[country][scenario],
                 "realized_harm_share": realized,
                 "formal_share_of_realized_harm": formal,
                 "cushion": CUSHION[country],
