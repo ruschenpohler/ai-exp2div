@@ -53,3 +53,9 @@ The author requested this proxy search during implementation. The search followe
 | COMPLETE-IDN | Intended payment completion | pending | pending / pending / pending | World Bank studies of mixed Indonesian universal-ish cash programs, including urban bank/account and rural village distribution | Intended payments | unanchored | Must include at least one BST-type and one BLT-Dana-Desa-type program. PKH compliance is excluded. |
 | COMP-LIC | Low-income comparator medians | pending | n/a | World Bank Identification for Development and Global Financial Inclusion datasets | Same component denominators and year | unanchored | Requires latest same-year data with at least 80% country coverage. |
 | COMP-LMIC | Lower-middle-income comparator medians | pending | n/a | World Bank Identification for Development and Global Financial Inclusion datasets | Same component denominators and year | unanchored | Requires latest same-year data with at least 80% country coverage. |
+
+## Delivery source-pass outcome
+
+- The World Bank Identification for Development landing page and candidate dataset URLs were attempted but were blocked or unavailable in this environment. No Indonesia identification value has been promoted.
+- The World Bank Global Financial Inclusion Database API was successfully opened and provides the raw 2021 Indonesian account-ownership observation recorded above.
+- Searches for World Bank primary studies reporting auditable intended-payment completion for both an urban bank/account transfer program and a rural village-distribution program did not produce a verified result. No completion scenario value has been promoted.
