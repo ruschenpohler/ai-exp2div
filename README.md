@@ -82,3 +82,9 @@ Bracketed labels, full citations, URLs. Every table cell and every §3 number tr
 8. The summary leads with the sequencing finding and concedes early, once, that the reader may already hold the allocation conclusion — the product is the reason and the sequence.
 9. Escrow sentences are framed as securing the claim and building its delivery — never as withholding. The money is theirs; the mechanism makes it reachable. Any sentence readable as "held back until they qualify" is rewritten.
 10. The §2 scenario sentence ("the inversion holds under cautious, central, and fast") may only be drafted after the scripts confirm it in all three scenario outputs; if it fails in any, the sentence reports which scenarios preserve it.
+
+---
+
+## Implementation Note: Adoption Proxies
+
+The adoption inputs require care. For the United States, the preferred reconstruction is an employment-weighted rate from the latest Business Trends and Outlook Survey current-use rates by employment-size class, weighted by Census employment in those classes. The published national business-count rate is not interchangeable with an employment share. For Indonesia, no direct artificial-intelligence-specific current-use figure has yet been verified in the approved sources; broader digital adoption measures will remain contextual rather than being presented as artificial-intelligence adoption. These choices preserve the distinction between a measured observation and a working figure.
