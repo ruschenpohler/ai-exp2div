@@ -100,6 +100,24 @@ The World Bank report *Beyond Unicorns: Harnessing Digital Technologies for Incl
 
 The World Bank Identification for Development DataBank and landing page were checked, but no downloadable value was obtained in this environment.
 
+### Decision record
+
+Working figure adopted: **foundational identity coverage = 0.98**, on an adult/population basis, labelled `working figure` and subject to author confirmation or replacement by an administrative figure.
+
+Anchors reviewed during this pass:
+
+1. World Bank, *Investing in People: Social Protection for Indonesia's 2045 Vision* (2020), states that "the majority of Indonesians have a population identity number (NIK)", issued through SIAK with biometrics as national ID credentials.
+2. Global Findex 2021 report text confirms that the Findex/ID4D partnership data treat the national ID document or legally recognized ID credential as the identification measure and that documentation barriers affect only a small minority of adults in Indonesia.
+3. Local Global Findex 2025 country file, Indonesia 2024: the documentation-barrier variable (`fin41`) is 2.4% of adults, supporting the view that the share of adults without usable identification is small. The exact definition of `fin41` requires the codebook; it is used here only as supporting evidence, not as the coverage measure itself.
+
+Decision rationale: 0.98 is consistent with all three anchors and with the well-established near-universal NIK/e-KTP coverage; it is a deliberately conservative working value rather than a precise survey estimate.
+
+Better options if the author wants to firm this up:
+
+- A Dukcapil administrative release stating NIK or e-KTP coverage with a clear denominator.
+- The 2021 ID4D Global Dataset (xlsx) from https://id4d.worldbank.org/global-dataset, which contains the survey-based foundational ID coverage for Indonesia.
+- The 2021 Global Findex/ID4D microdata through https://microdata.worldbank.org/catalog/ if the author can download it.
+
 ### Most promising remaining sources
 
 - 2021 Global Findex / Identification for Development identity-module microdata through the World Bank Microdata Library: https://microdata.worldbank.org/catalog/
@@ -159,6 +177,31 @@ https://www.microsave.net/2023/12/19/from-break-out-to-breakthrough-ways-to-sust
 It is a general article about Indonesia's digital economy, QRIS, digital public infrastructure, and inclusion. It does not report BLT Dana Desa intended-versus-completed payments, so it is not usable for this parameter.
 
 MicroSave's WordPress search for `BLT Dana Desa` returned no result. World Bank Documents and Reports searches for the full terms `Bantuan Sosial Tunai` and `BLT Dana Desa` did not expose a usable indexed report with completion numerators and denominators.
+
+### Decision record
+
+Resolved as working-figure scenario values, anchored to verified World Bank primary sources. No single report gives a clean intended-versus-paid rate for both programs; the decision uses the strongest verified delivery-execution anchors and documents the reasoning.
+
+| Scenario | Value | Anchor |
+|---|---|---|
+| cautious | 0.60 | National Economic Recovery Program (PEN) ~60% disbursed as of mid-October 2020. Source: World Bank, *Indonesia Economic Prospects, December 2020* ("Towards a Secure and Fast Recovery"). Mid-rollout execution, before program completion; conservative. |
+| central | 0.83 | The 2020 COVID-19 fiscal package was executed at 83% of final budget allocations by end-2020, with social protection among the best-executed components. Source: World Bank, *Indonesia Economic Prospects, June 2021*, Box A.3, based on Ministry of Finance data. Applying the package-wide execution rate to BST and BLT Dana Desa is conservative. |
+| fast | 0.95 | Judgment upper bound, consistent with: (i) the June 2021 IEP finding that social protection execution was "strong, especially in the areas of social protection"; (ii) the implementation plan's own prior that village cash programs complete above 90% ("two village programs both >90% do not constitute a range"); (iii) the plan's note that these programs ran with unusual urgency, making figures an upper bound. |
+
+Additional verified context recorded for transparency:
+
+- HiFy Round 1 (May 2020): the BLT family reached 14% of its 20-million-household target within about one month of launch; 54% of bottom-40 households had received at least one social assistance program. Sources: World Bank *Indonesia Economic Prospects, July 2020* and the HiFy Round 1 brief.
+- HiFy Round 4 (November 2020): 73% of households relied on government assistance. Source: HiFy Round 4 brief.
+- June 2021 IEP: BST was extended in April/May 2021, indicating continued operation beyond 2020.
+
+Sources opened:
+
+- https://documents1.worldbank.org/curated/en/804791594826869284/pdf/Indonesia-Economic-Prospects-The-Long-Road-to-Recovery.pdf (July 2020)
+- https://documents1.worldbank.org/curated/en/505381608137667057/pdf/Indonesia-Economic-Prospects-Towards-a-Secure-and-Fast-Recovery.pdf (December 2020)
+- https://documents1.worldbank.org/curated/en/379141623773793892/pdf/Indonesia-Economic-Prospects-June-2021.pdf (June 2021)
+- HiFy Round 1 brief and Round 4 brief (retrieved via Wayback Machine from the World Bank Indonesia COVID-19 Observatory page)
+
+Limitation note: these are fiscal-execution and household-receipt anchors, not program-level intended-versus-paid completion rates. If the author prefers a program-specific rate, the highest-value remaining source is the HiFy survey microdata (https://microdata.worldbank.org/index.php/catalog/3938), which contains the receipt module and weights and would allow computing receipt rates directly.
 
 ### Most promising remaining sources
 
