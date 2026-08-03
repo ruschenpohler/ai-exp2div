@@ -26,39 +26,44 @@ Source: `data/US Census BTOS/Employment Size Class.xlsx`.
 
 This is the United States adoption filter in `calcs/transmission.py`. It is a scale factor applied to the flagged exposure share.
 
-### What has been found
+### Decision record
 
-The supplied SUSB file contains employment totals in these compatible aggregate bands:
+Resolved. The employment-weighted current-use rate is **29.5%** (2 significant figures), or **29.48%** exactly.
 
-- Less than 5 employees: 6,295,615
-- 5-9 employees: 6,810,300
-- 10-19 employees: 8,844,269
-- 20-99 employees: 21,976,701
-- 100-499 employees: 18,323,671
-- 500+ employees: 73,497,851
+Calculation basis:
 
-Source: `data/US SUSB/us_state_6digitnaics_2022.xlsx`, United States total row, enterprise size.
+| Band | CBP 2023 establishment employment | BTOS current-use rate |
+|---|---:|---:|
+| 1-4 | 7,575,276 | 20.8% |
+| 5-9 | 9,721,925 | 21.3% |
+| 10-19 | 14,195,837 | 21.3% |
+| 20-49 | 22,828,921 | 22.7% |
+| 50-99 | 17,109,742 | 28.4% |
+| 100-249 | 20,808,223 | 33.6% |
+| 250+ | 47,591,818 | 36.8% |
+| Total | 139,831,742 | weighted 29.48% |
 
-The BTOS rates can therefore be aggregated upward:
+Data sources:
+- BTOS current-use rates by size class: `data/US Census BTOS/Employment Size Class.xlsx`
+- CBP 2023 United States file: https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23us.zip
+  - Row `uscode=98`, `naics=------`, `lfo=-`
+  - 2023, employment during the week of March 12
 
-- BTOS A, B, and C map exactly.
-- BTOS D and E combine into SUSB 20-99.
-- BTOS F and G combine into SUSB 100+.
-
-### Remaining limitation
-
-SUSB does not split 20-99 into 20-49 and 50-99, so the D/E combined rate requires a working assumption. It also does not need to split F/G if both are combined into 100+.
-
-The D/E rates differ by 5.7 percentage points; the F/G rates differ by 3.2 points. This should have a limited effect on the overall employment-weighted rate, but it must be labelled `working figure`.
+Rationale:
+- CBP provides the exact BTOS-compatible bands, replacing the SUSB aggregate-band approximation.
+- The rate is employment-weighted, which is the correct denominator for a worker-level adoption filter.
+- This is labelled `working figure` only in the sense that the BTOS rate is a survey estimate; the weighting itself is exact.
+- The earlier SUSB-based aggregate-band estimate of about 31.4% is superseded by this CBP-based value.
 
 ### Sources searched
 
 - BTOS main page: https://www.census.gov/hfp/btos
 - BTOS data page: https://www.census.gov/data/experimental-data-products/business-trends-and-outlook-survey.html
 - SUSB program page: https://www.census.gov/programs-surveys/susb.html
-- SUSB tables: https://www.census.gov/programs-surveys/susb/data/tables.html
+- CBP datasets: https://www.census.gov/programs-surveys/cbp/data/datasets.html
+- CBP 2023: https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html
 
-The BTOS dashboard and static page did not provide a more detailed employment-weight table. The local SUSB file is the best available weighting source.
+The CBP dataset was successfully downloaded and processed.
 
 ## 2. Indonesia Foundational Identification
 
@@ -224,9 +229,24 @@ For the Findex denominator conversion:
 - Use 2021 if the identity route is the 2021 Identification for Development/Findex module
 - Use 2024 if the 2024 Global Findex observation is used
 
+### Decision record
+
+Resolved for 2023 from World Bank World Development Indicators, `Population, total`:
+
+- Indonesia: **281,190,067**
+- World: **8,062,923,417**
+- Indonesia share: **3.49%**
+
+Source: https://api.worldbank.org/v2/country/IDN/indicator/SP.POP.TOTL?date=2023 and https://api.worldbank.org/v2/country/WLD/indicator/SP.POP.TOTL?date=2023
+
+Rationale:
+- 2023 is the latest estimate year in the World Population Prospects family already used locally and is the recommended base year for the allocation ratio.
+- The share is Indonesia divided by world population, both in the same year.
+- For the Findex denominator conversion, still use the year matching the Findex observation actually used in the chain (2021 or 2024).
+
 ### What has been found
 
-The supplied file `WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx` is a single-age extract and is not convenient for this calculation. It contains metadata and a partial row rather than easy country-level total-population rows.
+The supplied file `WPP2024_POP_F01_1_POPULATION_SINGLE_AGE_BOTH_SEXES.xlsx` is a single-age extract and is not convenient for this calculation. The World Bank World Development Indicators source above is simpler and confirmed.
 
 ### Recommended source
 
@@ -234,7 +254,7 @@ World Bank World Development Indicators, `Population, total`:
 
 https://data.worldbank.org/indicator/SP.POP.TOTL?locations=ID-1W
 
-This source directly displays Indonesia and World totals by year and is sufficient for both the population-share ratio and the denominator conversion, provided the year is recorded.
+This source directly provides the confirmed 2023 values used above.
 
 ## 8. Commons Baseline
 
