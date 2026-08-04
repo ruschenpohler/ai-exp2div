@@ -334,25 +334,29 @@ The final passage choice remains `FLAG TO AUTHOR`.
 
 ## 9. United States Concentration Anchor
 
-### What is needed
+### Status
 
-A usable figure or table from the latest Stanford Artificial Intelligence Index showing **concentration** of artificial-intelligence development and deployment. The memo uses this in section 1 only as framing: that AI rents accrue to a small set of firms in a few jurisdictions, so the recipient-side question is allocation and delivery, not collection.
+Resolved from the local copy `lit/HAI2026.pdf`, *Artificial Intelligence Index Report 2026*, Stanford HAI, Economics chapter 4.2 "Investment and Infrastructure".
 
-The specific items sought, in priority order:
+Concentration figures (page 182, Figures 4.2.8-4.2.11):
 
-1. **Private investment concentration**: the share of global private AI investment going to the United States (or to a small number of countries/firms), e.g., the report's "private AI investment by country" table. The index typically shows the United States accounting for the large majority of global private AI investment.
-2. **Notable-model concentration**: the number of notable AI models (or foundation models) produced per country, showing concentration among the United States, China, and the United Kingdom.
-3. **Newly funded AI company counts** by country, if the above are not directly available.
+- United States 2025 private AI investment: **$285.9 billion**.
+- Next largest: China **$12.4 billion** (United States is 23.1x China) and the United Kingdom **$5.9 billion** (United States is 48.5x).
+- Newly funded AI companies in 2025: United States **1,953**, United Kingdom 172, China 161.
+- Cumulative 2013-2025 private AI investment (page 184): United States **$757.3 billion**, China $131.8 billion, United Kingdom $34.1 billion.
+- Sub-national concentration (page 186): California alone attracted **$218 billion** in 2025, more than 75% of the United States total.
+
+Use in the memo: one framing sentence in section 1 that AI development and deployment rents are highly concentrated across countries and firms, labelled concentration of development/deployment, not a rent estimate. The $285.9 billion figure or the 23.1x United States-to-China ratio are the cleanest single numbers.
+
+### Other nuggets found in the economics section (not required, available if useful)
+
+- Corporate adoption (page 194, Figure 4.3.2): McKinsey State of AI 2025 regional organizational adoption rates. This is a different definition than the Business Trends and Outlook Survey employment-weighted adoption filter; it should not replace the BTOS-based 29.5% figure, but can corroborate direction.
+- Adoption speed (page 199, Figure 4.3.9): generative AI, computer, and internet adoption rates by years since introduction, relevant as context for the diffusion scenario assumption.
+- Labor market (pages 204+): AI job postings by country and skill, and a finding that early labor-market costs fall disproportionately on junior and entry-level workers (page 219) - usable color for section 2 if wanted.
 
 ### Source
 
-Link: https://hai.stanford.edu/ai-index-report
-
-Description: The AI Index is an independent initiative at the Stanford Institute for Human-Centered Artificial Intelligence (HAI). It publishes an annual report tracking AI development, investment, research, technical performance, and policy. The relevant chapter is the **"Industry" or "Economy" chapter** (titles vary by year), which contains the private-investment and notable-model tables. The current report is the *Artificial Intelligence Index Report* (latest edition; the download page is the report landing page above).
-
-How to use it: locate the table showing private AI investment by country for the most recent year and record the United States share (e.g., "X% of global private AI investment"). One number is sufficient; it will be cited as concentration of development/deployment, labelled framing, not a rent estimate. The IMF 2024 note is an approved alternate only if the AI Index table cannot be extracted.
-
-The report itself is the source; no separate public dataset is required. This is the only item still awaiting an external figure.
+Local copy: `lit/HAI2026.pdf`. Landing page: https://hai.stanford.edu/ai-index-report
 
 ## Current Takeover Order
 
