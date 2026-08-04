@@ -112,9 +112,10 @@ Anchors reviewed during this pass:
 
 Decision rationale: 0.98 is consistent with all three anchors and with the well-established near-universal NIK/e-KTP coverage; it is a deliberately conservative working value rather than a precise survey estimate.
 
-Better options if the author wants to firm this up:
+Author note (2026-08): the author confirms there is no official NIK coverage number published as a single national statistic. The 0.98 working figure therefore stands as a documented judgment anchored on the sources above, not on an official figure. No Dukcapil or ministry publication should be searched further; the only firmer alternative is the survey-based ID4D Global Dataset.
 
-- A Dukcapil administrative release stating NIK or e-KTP coverage with a clear denominator.
+Better option if the author wants to firm this up:
+
 - The 2021 ID4D Global Dataset (xlsx) from https://id4d.worldbank.org/global-dataset, which contains the survey-based foundational ID coverage for Indonesia.
 - The 2021 Global Findex/ID4D microdata through https://microdata.worldbank.org/catalog/ if the author can download it.
 
@@ -180,28 +181,50 @@ MicroSave's WordPress search for `BLT Dana Desa` returned no result. World Bank 
 
 ### Decision record
 
-Resolved as working-figure scenario values, anchored to verified World Bank primary sources. No single report gives a clean intended-versus-paid rate for both programs; the decision uses the strongest verified delivery-execution anchors and documents the reasoning.
+Resolved from the HiFy household microdata. The values below are computed directly from the World Bank Indonesia High-Frequency Monitoring of COVID-19 Impacts survey, using household receipt of BST (program code 102, sub-type A) and BLT Dana Desa (sub-type B), weighted by the survey weights.
 
-| Scenario | Value | Anchor |
+Weighted share of all households reporting receipt (module PS_9B):
+
+| Round | Survey period | Recall window | BST (% households) | BLT Dana Desa (% households) |
+|---|---|---|---|---|
+| 1 | May 2020 | since Feb 2020 | 2.4% | 1.2% |
+| 3 | Jul-Aug 2020 | since Feb 2020 | 15.3% | 10.4% |
+| 5 | Mar 2021 | since Jul 2020 | 20.9% | 8.9% |
+| 6 | Oct 2021 | since Apr 2021 | 12.8% | 11.4% |
+
+Implied completion among intended beneficiaries, dividing the receipt share by the intended share of households (BST target 9 million households, BLT Dana Desa target 11 million, of roughly 71 million households):
+
+| Round | BST implied completion | BLT implied completion |
 |---|---|---|
-| cautious | 0.60 | National Economic Recovery Program (PEN) ~60% disbursed as of mid-October 2020. Source: World Bank, *Indonesia Economic Prospects, December 2020* ("Towards a Secure and Fast Recovery"). Mid-rollout execution, before program completion; conservative. |
-| central | 0.83 | The 2020 COVID-19 fiscal package was executed at 83% of final budget allocations by end-2020, with social protection among the best-executed components. Source: World Bank, *Indonesia Economic Prospects, June 2021*, Box A.3, based on Ministry of Finance data. Applying the package-wide execution rate to BST and BLT Dana Desa is conservative. |
-| fast | 0.95 | Judgment upper bound, consistent with: (i) the June 2021 IEP finding that social protection execution was "strong, especially in the areas of social protection"; (ii) the implementation plan's own prior that village cash programs complete above 90% ("two village programs both >90% do not constitute a range"); (iii) the plan's note that these programs ran with unusual urgency, making figures an upper bound. |
+| 1 (May 2020) | ~0.19 | ~0.08 |
+| 3 (Jul-Aug 2020) | >1, cap 0.95 | ~0.67 |
+| 5 (Mar 2021) | >1, cap 0.95 | ~0.58 |
+| 6 (Oct 2021) | ~1.0, cap 0.95 | ~0.74 |
 
-Additional verified context recorded for transparency:
+Scenario values adopted:
 
-- HiFy Round 1 (May 2020): the BLT family reached 14% of its 20-million-household target within about one month of launch; 54% of bottom-40 households had received at least one social assistance program. Sources: World Bank *Indonesia Economic Prospects, July 2020* and the HiFy Round 1 brief.
-- HiFy Round 4 (November 2020): 73% of households relied on government assistance. Source: HiFy Round 4 brief.
-- June 2021 IEP: BST was extended in April/May 2021, indicating continued operation beyond 2020.
+| Scenario | Value | Basis |
+|---|---|---|
+| cautious | 0.60 | Rural/cash BLT Dana Desa leg at mid-rollout (implied ~0.67 in Round 3), rounded conservatively. This is the weaker of the two failure modes. |
+| central | 0.75 | Average of the two legs at maturity: BLT Dana Desa ~0.58-0.74 and BST near 0.95. |
+| fast | 0.95 | Urban/account BST leg at or above target, consistent with the implementation plan's prior that account-based programs complete above 90%. |
+
+Source: HiFy microdata, reference IDN_2020_HFMCI_v06_M, local copy in `data/WB COVID HiFreq`. Variables: module PS_9B, program code 102, sub-type A (BST) / B (BLT), receipt indicator ps9_2a. Weights: wgt_R1, wgt_R3, wgt_R6 (first sample) and fwgt_R5 (second sample), joined through the roster nks_covid key and household id. Program-code mapping confirmed against the Round 3, 5, and 6 questionnaires.
+
+Caveats: receipt is household-reported and recall-window based; implied completion divides reported receipt by the intended target share and assumes recipients are within target; Round 5 uses second-sample weights (fwgt_R5), the other rounds the first-sample weights. These are working-figure values and are flagged for author approval.
+
+Corroborating fiscal-execution context (from opened World Bank reports):
+
+- National Economic Recovery Program ~60% disbursed by mid-October 2020 (*Indonesia Economic Prospects, December 2020*).
+- The 2020 COVID-19 fiscal package was executed at 83% of final budget allocations by end-2020, with social protection among the best-executed components (*Indonesia Economic Prospects, June 2021*, Box A.3, Ministry of Finance data).
+- BST was extended in April/May 2021, indicating operation beyond 2020 (*Indonesia Economic Prospects, June 2021*).
 
 Sources opened:
 
+- HiFy microdata and questionnaires: https://microdata.worldbank.org/index.php/catalog/3938 (local copy in `data/WB COVID HiFreq`)
 - https://documents1.worldbank.org/curated/en/804791594826869284/pdf/Indonesia-Economic-Prospects-The-Long-Road-to-Recovery.pdf (July 2020)
 - https://documents1.worldbank.org/curated/en/505381608137667057/pdf/Indonesia-Economic-Prospects-Towards-a-Secure-and-Fast-Recovery.pdf (December 2020)
 - https://documents1.worldbank.org/curated/en/379141623773793892/pdf/Indonesia-Economic-Prospects-June-2021.pdf (June 2021)
-- HiFy Round 1 brief and Round 4 brief (retrieved via Wayback Machine from the World Bank Indonesia COVID-19 Observatory page)
-
-Limitation note: these are fiscal-execution and household-receipt anchors, not program-level intended-versus-paid completion rates. If the author prefers a program-specific rate, the highest-value remaining source is the HiFy survey microdata (https://microdata.worldbank.org/index.php/catalog/3938), which contains the receipt module and weights and would allow computing receipt rates directly.
 
 ### Most promising remaining sources
 
@@ -313,13 +336,23 @@ The final passage choice remains `FLAG TO AUTHOR`.
 
 ### What is needed
 
-A figure from the latest Stanford Artificial Intelligence Index industry chapter showing concentration of artificial-intelligence model development, notable models, or private investment by country or firm.
+A usable figure or table from the latest Stanford Artificial Intelligence Index showing **concentration** of artificial-intelligence development and deployment. The memo uses this in section 1 only as framing: that AI rents accrue to a small set of firms in a few jurisdictions, so the recipient-side question is allocation and delivery, not collection.
+
+The specific items sought, in priority order:
+
+1. **Private investment concentration**: the share of global private AI investment going to the United States (or to a small number of countries/firms), e.g., the report's "private AI investment by country" table. The index typically shows the United States accounting for the large majority of global private AI investment.
+2. **Notable-model concentration**: the number of notable AI models (or foundation models) produced per country, showing concentration among the United States, China, and the United Kingdom.
+3. **Newly funded AI company counts** by country, if the above are not directly available.
 
 ### Source
 
-https://hai.stanford.edu/ai-index-report
+Link: https://hai.stanford.edu/ai-index-report
 
-The report itself is the likely source. A separate public downloadable dataset has not yet been verified. The IMF 2024 note is an approved alternate only if it contains a usable concentration figure.
+Description: The AI Index is an independent initiative at the Stanford Institute for Human-Centered Artificial Intelligence (HAI). It publishes an annual report tracking AI development, investment, research, technical performance, and policy. The relevant chapter is the **"Industry" or "Economy" chapter** (titles vary by year), which contains the private-investment and notable-model tables. The current report is the *Artificial Intelligence Index Report* (latest edition; the download page is the report landing page above).
+
+How to use it: locate the table showing private AI investment by country for the most recent year and record the United States share (e.g., "X% of global private AI investment"). One number is sufficient; it will be cited as concentration of development/deployment, labelled framing, not a rent estimate. The IMF 2024 note is an approved alternate only if the AI Index table cannot be extracted.
+
+The report itself is the source; no separate public dataset is required. This is the only item still awaiting an external figure.
 
 ## Current Takeover Order
 
